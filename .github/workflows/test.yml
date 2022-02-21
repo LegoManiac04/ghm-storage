@@ -13,6 +13,12 @@ jobs:
         run: |
           curl -X GET https://api.scratch.mit.edu/studios/5842709/managers -o ./managers.json
 
+
+      - name: Setup git config
+        run: |
+          git config user.name "github-actions"
+          git config user.email <>
+
       - name: Commit
         run: |
           # Stage the file, commit and push
