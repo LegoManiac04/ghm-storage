@@ -9,7 +9,20 @@ fetch(url).then((response)=>{
    const {username} = data[0];
 
    document.getElementById("text").innerHTML = username;
+    
+   document.getElementById('text').style.display = "unset"
+    
 })
 </script>
 
 <div id="text"></div>
+
+<style>
+#text {
+  background-color: #fddfa6;
+  position: absolute;
+  padding: 20px;
+  border-radius: 15px;
+  display: none;
+}
+</style>
