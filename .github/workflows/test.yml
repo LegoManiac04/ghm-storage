@@ -1,6 +1,8 @@
-name: File Sync
+name: Get Latest Host
 on:
-  workflow_dispatch
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -9,7 +11,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: Get files from other repo
+      - name: Get manager.json
         run: |
           curl -X GET https://api.scratch.mit.edu/studios/5842709/managers -o ./managers.json
 
@@ -23,5 +25,5 @@ jobs:
         run: |
           # Stage the file, commit and push
           git add .
-          git diff-index --quiet HEAD || git commit -m "Synced Files"
+          git diff-index --quiet HEAD || git commit -m "Updated"
           git push
