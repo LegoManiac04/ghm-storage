@@ -1,0 +1,24 @@
+name: File Sync
+on:
+  workflow_dispatch
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Get files from other repo
+        run: |
+          curl -X GET https://api.scratch.mit.edu/studios/5842709/managers -o ./managers.json
+      - name: Setup git config
+        run: |
+          git config user.name "qpocketbot"
+          git config user.email ${{ secrets.MY_EMAIL }}
+      - name: Commit
+        run: |
+          # Stage the file, commit and push
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Synced Files"
+          git push
