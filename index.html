@@ -1,0 +1,15 @@
+<script>
+const url = "https://legomaniac04.github.io/test/managers.json";
+
+// sending request
+fetch(url).then((response)=>{
+  return response.json();  // converting byte data to json
+}).then(data=>{
+
+   const {username} = data[0];
+
+   document.getElementById("text").innerHTML = username;
+})
+</script>
+
+<div id="text"></div>
