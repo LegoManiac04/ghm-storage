@@ -1,7 +1,7 @@
 name: Get Latest Host
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '45 * * * *'
   workflow_dispatch:
 
 jobs:
