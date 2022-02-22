@@ -6,12 +6,12 @@ fetch(url).then((response)=>{
   return response.json();  // converting byte data to json
 }).then(data=>{
 
-   const {username} = data[0];
+   const {username, id} = data[0];
 
-   document.getElementById("text").innerHTML = username;
+   document.getElementById("text").innerHTML = "<img src='https://uploads.scratch.mit.edu/get_image/user/" + id + "_50x50.png'/>" + "<span>" + username + "</span>";
     
-   document.getElementById('text').style.display = "unset"
-    
+   document.getElementById('text').style.display = "flex"
+        
 })
 </script>
 
@@ -21,8 +21,28 @@ fetch(url).then((response)=>{
 #text {
   background-color: #fddfa6;
   position: absolute;
-  padding: 20px;
+  top: 50px;
+  align-items: center;
+  padding: 10px;
   border-radius: 15px;
+  box-shadow: #0007 0 5px 10px -5px;
   display: none;
 }
+    
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+}
+    
+img {
+  border-radius: 15px;
+}
+
+span {
+  margin-left: 10px;
+}
+
 </style>
