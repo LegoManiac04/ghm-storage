@@ -13,7 +13,7 @@ jobs:
 
       - name: Get manager.json
         run: |
-          curl -X GET https://api.scratch.mit.edu/studios/5842709/managers -o ./managers.json
+          curl -X GET 'https://api.scratch.mit.edu/studios/5842709/managers?limit=1' -o ./managers.json
 
 
       - name: Setup git config
