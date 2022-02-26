@@ -8,25 +8,32 @@ fetch(url).then((response)=>{
 
    const {username, id} = data[0];
 
-   document.getElementById("text").innerHTML = "<img src='https://uploads.scratch.mit.edu/get_image/user/" + id + "_50x50.png'/>" + "<span>" + username + "</span>";
+   document.getElementById("block").innerHTML = "<img src='https://uploads.scratch.mit.edu/get_image/user/" + id + "_500x500.png'/>" + "<div id='user'><span>" + username + "</span><span style='font-family: monospace;'>Host</span></div>"
     
-   document.getElementById('text').style.display = "flex"
-        
+   document.getElementById('block').style.display = "flex"
+            
 })
 </script>
 
-<div id="text"></div>
+<div id="block"></div>
 
 <style>
-#text {
-  background-color: #fddfa6;
+#block {
+  background-color: #ffa454;
+  font-family: mono;
+  color: #fcfcfc;
+  font-weight: bold;
   position: absolute;
   top: 50px;
   align-items: center;
   padding: 10px;
-  border-radius: 15px;
-  box-shadow: #0007 0 5px 10px -5px;
+  border-radius: 15px 5px;
+  box-shadow: #0003 0 5px 10px -5px;
   display: none;
+}
+    
+#user {
+  display: grid;
 }
     
 body {
@@ -38,7 +45,8 @@ body {
 }
     
 img {
-  border-radius: 15px;
+  border-radius: inherit;
+  width: 50px;
 }
 
 span {
