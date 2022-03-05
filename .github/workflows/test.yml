@@ -1,10 +1,6 @@
 name: Get Latest Host
 on:
-  schedule:
-    - cron: '45 * * * *'
   workflow_dispatch:
-  repository_dispatch:
-    types: [Refresh]
 
 jobs:
   sync:
