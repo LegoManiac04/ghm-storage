@@ -1,0 +1,24 @@
+name: Get Rotation Order
+on:
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Get cloud data
+        run: |
+          curl -X GET 'https://clouddata.scratch.mit.edu/logs?projectid=618997313&limit=2&offset=0' -o ./list.json
+      - name: Setup git config
+        run: |
+          git config user.name "LegoManiac04"
+          git config user.email ${{ secrets.MY_EMAIL }}
+      - name: Commit
+        run: |
+          # Stage the file, commit and push
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Updated"
+          git push
