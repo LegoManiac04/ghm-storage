@@ -1,4 +1,4 @@
-<script>
+<script>    
 const url = "https://legomaniac04.github.io/test/list.json";
 
 // sending request
@@ -8,17 +8,43 @@ fetch(url).then((response)=>{
 
    const {value} = data[1];
     
+   document.getElementById("title").innerHTML = "Gaehive Manager Portal";
+    
    document.getElementById("m0").innerHTML = document.getElementById(value.charAt(0)).innerHTML;
    document.getElementById("m1").innerHTML = document.getElementById(value.charAt(1)).innerHTML;
    document.getElementById("m2").innerHTML = document.getElementById(value.charAt(2)).innerHTML;
    document.getElementById("m3").innerHTML = document.getElementById(value.charAt(3)).innerHTML;
    document.getElementById("m4").innerHTML = document.getElementById(value.charAt(4)).innerHTML;
-   document.getElementById("m5").innerHTML = document.getElementById(value.charAt(5)).innerHTML;
-   document.getElementById("host").innerHTML = document.getElementById(value.charAt(6)).innerHTML;
-
-            
+   document.getElementById("host").innerHTML = document.getElementById(value.charAt(5)).innerHTML;
+    
+   document.getElementById("host").lastElementChild.innerHTML = document.getElementById("host").lastElementChild.innerHTML + "<span style='font-family: monospace;'>Host</span>"
+    
+   document.getElementById("m0").lastElementChild.innerHTML = document.getElementById("m0").lastElementChild.innerHTML + "<span style='font-family: monospace;'>Next Host</span>"
+                
+})
+    
+const url2 = "https://legomaniac04.github.io/test/managers.json";
+// sending request
+fetch(url2).then((response)=>{
+  return response.json();  // converting byte data to json
+}).then(data=>{
+   const {username} = data[0];
+    
+   if (document.getElementById("host").lastElementChild.innerHTML.includes(username) == false) {
+       document.getElementById("alert").style.display = "flex"
+   };
+                
 })
 </script>
+
+<head>
+    
+    <title id="title"></title>
+    <link rel="icon" href="./favicon.png">
+    
+</head>
+
+<div id="alert">The host list below isn't up-to-date! Please make sure the Host is correct in the Manager Terminal.</div>
 
 <div id="host"></div>
 <div id="m0"></div>
@@ -26,24 +52,62 @@ fetch(url).then((response)=>{
 <div id="m2"></div>
 <div id="m3"></div>
 <div id="m4"></div>
-<div id="m5"></div>
 
 <div class="list">
-<div id="0"><img src="https://uploads.scratch.mit.edu/get_image/user/27265189_500x500.png"/> DogCatPuppyLover</div>
-<div id="1"><img src="https://uploads.scratch.mit.edu/get_image/user/20555709_500x500.png"/> cutefruit</div>
-<div id="2"><img src="https://uploads.scratch.mit.edu/get_image/user/21629747_500x500.png"/> LegoManiac04</div>
-<div id="3"><img src="https://uploads.scratch.mit.edu/get_image/user/71673362_500x500.png"/> chooz-eets</div>
-<div id="4"><img src="https://uploads.scratch.mit.edu/get_image/user/14827951_500x500.png"/> MiniSeaArtist</div>
-<div id="5"><img src="https://uploads.scratch.mit.edu/get_image/user/58864118_500x500.png"/> NebulaOfTheEarth</div>
-<div id="6"><img src="https://uploads.scratch.mit.edu/get_image/user/59453672_500x500.png"/> hoIographic</div>
+<div id="0"><img src="https://uploads.scratch.mit.edu/get_image/user/27265189_500x500.png"/> <div id="user"><span>DogCatPuppyLover</span></div></div>
+<div id="1"><img src="https://uploads.scratch.mit.edu/get_image/user/20555709_500x500.png"/> <div id="user"><span>cutefruit</span></div></div>
+<div id="2"><img src="https://uploads.scratch.mit.edu/get_image/user/21629747_500x500.png"/> <div id="user"><span>LegoManiac04</span></div></div>
+<div id="3"><img src="https://uploads.scratch.mit.edu/get_image/user/71673362_500x500.png"/> <div id="user"><span>chooz-eets</span></div></div>
+<div id="4"><img src="https://uploads.scratch.mit.edu/get_image/user/58864118_500x500.png"/> <div id="user"><span>NebulaOfTheEarth</span></div></div>
+<div id="5"><img src="https://uploads.scratch.mit.edu/get_image/user/59453672_500x500.png"/> <div id="user"><span>hoIographic</span></div></div>
 </div>
 
 <style>
+body {
+  display: grid;
+  justify-items: center;
+  height: 100;
+}
+    
 .list {
   display: none;
 }
     
 img {
-  height: 50px;
-    }
+  height: 60px;
+  width: 60px;
+  border-radius: inherit;
+}
+    
+#host, #m0, #m1, #m2, #m3, #m4 {
+  margin: 5px;
+  background-color: #ffa454;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fcfcfc;
+  font-weight: bold;
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px 5px;
+  box-shadow: #0003 0 5px 10px -5px;
+}
+    
+#user {
+  display: grid;
+  margin-left: 10px;
+}
+    
+#alert {
+  display: none;
+  background-color: coral;
+  width: fit-content;
+  padding: 10px;
+  height: fit-content;
+  text-align: center;
+  box-shadow: #0003 0 5px 10px -5px;
+  border-radius: 15px 5px;
+}
+
 </style>
