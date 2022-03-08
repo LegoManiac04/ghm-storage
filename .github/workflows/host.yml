@@ -2,7 +2,7 @@ name: Get Latest Host
 on:
   workflow_run:
     workflows: [Get Rotation Order]
-    types: [requested]
+    types: [completed]
 
 jobs:
   sync:
