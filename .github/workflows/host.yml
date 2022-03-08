@@ -1,6 +1,8 @@
 name: Get Latest Host
 on:
-  workflow_dispatch:
+  workflow_run:
+    workflows: [Get Rotation Order]
+    types: [requested]
 
 jobs:
   sync:
