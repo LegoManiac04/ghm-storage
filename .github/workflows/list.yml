@@ -1,5 +1,7 @@
 name: Get Rotation Order
 on:
+  schedule:
+    - cron: '45 * * * *'
   workflow_dispatch:
 
 jobs:
