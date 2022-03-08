@@ -14,10 +14,16 @@ jobs:
       - name: Get cloud data
         run: |
           curl -X GET 'https://clouddata.scratch.mit.edu/logs?projectid=618997313&limit=2&offset=0' -o ./list.json
+          
+      - name: Get manager.json
+        run: |
+          curl -X GET 'https://api.scratch.mit.edu/studios/5842709/managers?limit=1' -o ./managers.json
+          
       - name: Setup git config
         run: |
           git config user.name "LegoManiac04"
           git config user.email ${{ secrets.MY_EMAIL }}
+          
       - name: Commit
         run: |
           # Stage the file, commit and push
