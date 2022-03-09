@@ -20,6 +20,8 @@ fetch(url).then((response)=>{
    document.getElementById("host").lastElementChild.innerHTML = document.getElementById("host").lastElementChild.innerHTML + "<span style='font-family: monospace;'>Host</span>"
     
    document.getElementById("m0").lastElementChild.innerHTML = document.getElementById("m0").lastElementChild.innerHTML + "<span style='font-family: monospace;'>Next Host</span>"
+    
+   document.getElementById('hostqueue').style.transform = "scale(1)";
                 
 })
     
@@ -44,14 +46,23 @@ fetch(url2).then((response)=>{
     
 </head>
 
+<div class="stripe"></div>
+
+<div class="hostqueue" id="hostqueue">
 <div id="alert">The host list below isn't up-to-date! Please make sure the Host is correct in the Manager Terminal.</div>
 
-<div id="host"></div>
-<div id="m0"></div>
-<div id="m1"></div>
-<div id="m2"></div>
-<div id="m3"></div>
-<div id="m4"></div>
+<div class="hostbox">
+    <div id="host"></div>
+    <div class="divider"></div>
+    <div id="m0"></div>
+</div>
+<div class="nextlist">
+    <div id="m1"></div>
+    <div id="m2"></div>
+    <div id="m3"></div>
+    <div id="m4"></div>
+</div>
+</div>
 
 <div class="list">
 <div id="0"><img src="https://uploads.scratch.mit.edu/get_image/user/27265189_500x500.png"/> <div id="user"><span>DogCatPuppyLover</span></div></div>
@@ -63,10 +74,15 @@ fetch(url2).then((response)=>{
 </div>
 
 <style>
+html {
+  background-color: beige;
+}
+    
 body {
   display: grid;
   justify-items: center;
-  height: 100;
+  height: 0;
+  margin: 0;
 }
     
 .list {
@@ -80,18 +96,20 @@ img {
 }
     
 #host, #m0, #m1, #m2, #m3, #m4 {
-  margin: 5px;
-  background-color: #ffa454;
+  margin: 10px;
+  background-color: #f9f9f9;
   font-family: Arial, Helvetica, sans-serif;
-  color: #fcfcfc;
+  color: #444;
   font-weight: bold;
   display: flex;
-  width: fit-content;
-  height: fit-content;
   align-items: center;
   padding: 10px;
-  border-radius: 15px 5px;
+  border-radius: 15px;
   box-shadow: #0003 0 5px 10px -5px;
+}
+    
+#host, #m0 {
+  box-shadow: none;
 }
     
 #user {
@@ -107,7 +125,32 @@ img {
   height: fit-content;
   text-align: center;
   box-shadow: #0003 0 5px 10px -5px;
-  border-radius: 15px 5px;
+  border-radius: 15px;
 }
 
+.stripe {
+  background: linear-gradient(to right, lightcoral, #ffb74d, yellow, lightgreen, #4fc3f7, #ba68c8);
+  height: 1px;
+  width: 100%;
+}
+    
+.divider {
+  border: #9c9 dashed 1px;
+  margin: 10px;
+}
+    
+.hostbox {
+  display: flex;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: #0003 0 5px 10px -5px;
+  margin-top: 50px;
+  background-color: #f9f9f9;
+}
+    
+.hostqueue {
+  transform: scale(0);
+  transition: transform 0.5s;
+}
+    
 </style>
