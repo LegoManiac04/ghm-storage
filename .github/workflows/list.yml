@@ -1,4 +1,4 @@
-name: Get Rotation Order
+name: Get Host Data
 on:
   schedule:
     - cron: '45 * * * *'
@@ -15,13 +15,9 @@ jobs:
         run: |
           curl -X GET 'https://clouddata.scratch.mit.edu/logs?projectid=618997313&limit=2&offset=0' -o ./list.json
           
-      - name: Get manager.json
+      - name: Get studio host
         run: |
           curl -X GET 'https://api.scratch.mit.edu/studios/5842709/managers?limit=1' -o ./managers.json
-          
-      - name: Set date
-        run: |
-          date > date.json
         
       - name: Setup git config
         run: |
