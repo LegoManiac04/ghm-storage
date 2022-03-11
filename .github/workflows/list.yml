@@ -19,6 +19,10 @@ jobs:
         run: |
           curl -X GET 'https://api.scratch.mit.edu/studios/5842709/managers?limit=1' -o ./managers.json
         
+      - name: Get time
+        run: |
+          date +{'"date"':'"'%I:%M"%p"' '%Z'"'} > time.json
+        
       - name: Setup git config
         run: |
           git config user.name "LegoManiac04"
