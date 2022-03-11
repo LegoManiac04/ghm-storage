@@ -21,7 +21,7 @@ jobs:
         
       - name: Get time
         run: |
-          date +{'"date"':'"'%I:%M"%p"' '%Z'"'} > time.json
+          TZ=US/Pacific date +{'"date"':'"'%I:%M"%p"' '%Z'"'} > time.json
         
       - name: Setup git config
         run: |
