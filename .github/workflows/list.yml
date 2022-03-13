@@ -1,11 +1,11 @@
-name: Get Host Data
+name: Get Data
 on:
   schedule:
     - cron: '45 * * * *'
   workflow_dispatch:
 
 jobs:
-  sync:
+  Sync:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
