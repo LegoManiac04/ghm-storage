@@ -19,6 +19,10 @@ jobs:
         run: |
           curl -X GET 'https://api.scratch.mit.edu/studios/5842709/managers?limit=1' -o ./managers.json
         
+      - name: Get latest manager thread
+        run: |
+          curl -X GET 'https://api.scratch.mit.edu/studios/30486213/comments?limit=1' -o ./latestthread.json
+        
       - name: Get time
         run: |
           TZ=US/Pacific date +{'"date"':'"'%I:%M"%p"' '%Z'"'} > time.json
