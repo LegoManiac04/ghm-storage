@@ -25,7 +25,7 @@ jobs:
         
       - name: Setup git config
         run: |
-          git config user.name "SporkelBot[bot]"
+          git config user.name "sporkelbot[bot]"
           git config user.email "24119829+sporkelbot[bot]@users.noreply.github.com"
           
       - name: Commit
