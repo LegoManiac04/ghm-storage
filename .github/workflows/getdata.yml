@@ -21,8 +21,12 @@ jobs:
         
       - name: Get latest manager thread
         run: |
-          curl -X GET 'https://api.scratch.mit.edu/studios/30486213/comments?limit=1' -o ./latestthread.json
-        
+          curl -X GET 'https://api.scratch.mit.edu/studios/30486213/comments?limit=1' -o ./latestman.json
+      
+      - name: Get latest curator thread
+        run: |
+          curl -X GET 'https://api.scratch.mit.edu/studios/30486215/comments?limit=1' -o ./latestcur.json
+      
       - name: Get time
         run: |
           TZ=US/Pacific date +{'"date"':'"'%I:%M"%p"' '%Z'"'} > time.json
@@ -31,6 +35,12 @@ jobs:
         run: |
           git config user.name "SporkelBot"
           git config user.email ${{ secrets.MY_EMAIL }}
+          
+  Push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
           
       - name: Commit
         run: |
