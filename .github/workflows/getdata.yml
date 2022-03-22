@@ -36,12 +36,6 @@ jobs:
           git config user.name "SporkelBot"
           git config user.email ${{ secrets.MY_EMAIL }}
           
-  Push:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-          
       - name: Commit
         run: |
           # Stage the file, commit and push
