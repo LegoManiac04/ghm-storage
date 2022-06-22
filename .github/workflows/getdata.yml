@@ -11,10 +11,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: Get cloud data
-        run: |
-          curl -X GET 'https://clouddata.scratch.mit.edu/logs?projectid=618997313&limit=2&offset=0' -o ./list.json
-          
       - name: Get studio host
         run: |
           curl -X GET 'https://api.scratch.mit.edu/studios/5842709/managers?limit=1' -o ./managers.json
